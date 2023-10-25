@@ -13,5 +13,25 @@
 
 **Цель работы** - развертывание виртуальной машины на азе платформы Yandex Cloud с установленной системой контроля конфигурации Ansible и установка CHR в VirtualBox.
 
-В ходе работы была развернута вирутальная машина Ubuntu 22.04 с помощью Yandex Cloud
+В ходе работы была развернута вирутальная машина Ubuntu 22.04 с помощью Yandex Cloud. У машины 
 ![scheme](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab1/screenshots/VM_YandexCloud.png)
+
+У машины установлены внешний IP-адресс 158.160.44.208 и внутренний - 10.128.0.21.
+
+В виртуальной машине быи установлены python3 (версия 3.10.12) и Ansible с помощью команд:
+
+```sudo apt install python3-pip
+sudo pip3 install ansible
+``` 
+Следующим шагом было создание виртуальной машины CHR в VirtualBox. На официальном сайте Mikrotic был скачен образ chr-6.49.10. Был создан CHR, в котором был настроен пользователь admin.
+
+На виртуальной машине Ubuntu был поднят сервер  Wireguard для организации VPN туннеля между сервером автоматизации с установленной системой контроля Ansible и локаьным CHR.
+
+Чтобы поднять туннель VPN на локальном CHR был настроен Wireguard клиент.
+
+В результате лабораторной работы была получена схема, представленная ниже.
+![scheme](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab1/NP_lab1.drawio)
+
+
+
+

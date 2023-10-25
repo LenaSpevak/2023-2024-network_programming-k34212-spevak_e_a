@@ -5,7 +5,8 @@
 #### Group: K33212
 #### Author: Spevak Elena Aleksandrovna
 #### Lab: Lab1
-#### Date of create: 
-#### Date of finished: 
+#### Date of create: 24.10.2023
+#### Date of finished: 26.10.2023
 
 # **Отчёт по лабораторной работе №1**
+# "Установка CHR и Ansible, настройка VPN"

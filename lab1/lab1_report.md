@@ -31,6 +31,7 @@ sudo pip3 install ansible
 Чтобы поднять туннель VPN на локальном CHR был настроен Wireguard клиент.
 
 В результате лабораторной работы была получена схема, представленная ниже.
+
 ![Схема сети](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab1/NP_lab1.drawio.png)
 
 

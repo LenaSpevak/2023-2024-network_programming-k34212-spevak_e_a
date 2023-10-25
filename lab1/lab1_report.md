@@ -30,7 +30,13 @@ sudo pip3 install ansible
 Чтобы поднять туннель VPN на локальном CHR был настроен Wireguard клиент.
 
 В результате лабораторной работы была получена схема, представленная ниже.
-![scheme](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab1/NP_lab1.drawio)
+![scheme](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab1/NP_lab1.drawio.png)
+
+Проверка связанности сервера автоматизации и локальной виртуальной машины с установленым CHR представлена на скриншоте:
+![scheme]()
+
+**Вывод**
+Был создан сервер автоматизации с установленной системой контроля конфигураций Ansible в облачном сервисе Yandex Cloud и виртуальная машина на локальном устройстве с установленной RouterOS в VirtualBox. Между ними был настроен VPN тунель с помощью протокола Wireguard.
 
 
 

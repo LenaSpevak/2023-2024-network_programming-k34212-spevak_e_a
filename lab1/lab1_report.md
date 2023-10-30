@@ -2,7 +2,7 @@
 #### Faculty: [FICT](https://fict.itmo.ru)
 #### Course: [Network programming](https://github.com/itmo-ict-faculty/network-programming)
 #### Year: 2023/2024
-#### Group: K33212
+#### Group: K34212
 #### Author: Spevak Elena Aleksandrovna
 #### Lab: Lab1
 #### Date of create: 24.10.2023

@@ -1,0 +1,38 @@
+---
+
+- name: "playbook for lab2" 
+- hosts: CHR1, CHR2
+  vars:
+    host_vars:
+      CHR1:
+        router_ip: 1.1.1.1
+      CHR2:
+        router_ip: 2.2.2.2
+
+  tasks:
+    - name: Set User&Password
+      community.routeros.command:
+        commands: "user add name=user password=user group=full"
+    
+    - name: Set NTP
+      community.routeros.command:
+        commands: "system ntp client set enabled=yes primary-ntp=8.8.8.8"
+
+    - name: Set OSPF
+      community.routeros.command:
+        comands: 
+          - /interface bridge add name=Lo
+          - /ip address add interface=Lo address="{{ router_id }}/32" 
+          - /routing ospf instance set router-id="{{ router_id }}"
+          - /routing ospf  network=0.0.0.0/0 add area=backbone" 
+
+    - name: Collect config
+      community.network.routeros.facts:
+        gather_subset:
+          - config
+          - ansible_net_ospf_instance 
+          - ansible_net_ospf_neighbor
+         
+...
+ansible_net_ospf_instance 
+ansible_net_ospf_neighbor

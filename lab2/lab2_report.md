@@ -153,6 +153,7 @@ ansible_network_os=routeros
 Конфиги после настройки устройств представлены ниже:
 
 - CHR1:
+
 ![](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab2/screenshots/CHR1_config1.jpg)
 
 ![](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab2/screenshots/CHR1_config2.jpg)

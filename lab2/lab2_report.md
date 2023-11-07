@@ -170,7 +170,7 @@ ansible_network_os=routeros
 
 Полученная схема:
 
-![](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab2/NP_lab2.png)
+![](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab2/NP_lab2.drawio.png))
 
 **Вывод**
 

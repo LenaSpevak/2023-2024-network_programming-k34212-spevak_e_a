@@ -168,6 +168,10 @@ ansible_network_os=routeros
 
 ![](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab2/screenshots/config.jpg)
 
+Полученная схема:
+
+![](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab2/NP_lab2.png)
+
 **Вывод**
 
 В данной лабораторной работе была создана вторая виртуальная машина CHR2, с помощью Ansible на CHR1 и CHR2 были настроены логин/пароль, NTP Client, OSPF. Были собраны конфигурационные данный по машинах и данные по OSPF.

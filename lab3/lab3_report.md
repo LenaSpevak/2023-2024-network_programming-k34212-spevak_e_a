@@ -63,7 +63,7 @@
   redis-cli ping
   ```
 
-  ![проверка службы redis](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/redix_checking.png)
+  ![проверка службы redis](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/redis_cheking.png)
 
  - Установка необходимых пакетов для NetBox
   

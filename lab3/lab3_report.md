@@ -185,9 +185,9 @@
 
   В NetBox были добавлены устройства - CHR1 и CHR2,а в них - данные об интерфесах и IP-адреса. Так же были добавлены такие записи как, Site(NetProgLabs - физическое расположение устройств), роль (роутер), производитель (MikroTik)и тип (RouterOsv7), которые указывались в описании устройств.
 
- ![Интерфейсы]()
+ ![Интерфейсы](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/devices_interfaces.png)
 
- ![IP-адреса](https://github.com/LenaSpevak/    2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/ip_addresses.png)
+ ![IP-адреса](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/ip_addresses.png)
 
  ![Устройства](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/netbox_devices.jpg)
 

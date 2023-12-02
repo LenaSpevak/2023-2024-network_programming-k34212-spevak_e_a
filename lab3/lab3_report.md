@@ -271,7 +271,7 @@
 
   После его выполнения был получен следующий результат:
 
-  ![Выполнение сценария](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/getting_serial_num.jpg)
+  ![Выполнение сценария](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/getting_serial_num.jpg)
 
   ![Серийтный номер перовго устрйоства](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/serial_num_1.jpg)
 

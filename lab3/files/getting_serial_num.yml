@@ -1,0 +1,22 @@
+  - name: Get Serial Numbers To NetBox
+  hosts: device_roles_router
+  tasks:
+    - name: Get Serial Number
+      community.routeros.command:
+        commands:
+          - /system license print
+      register: license_print
+    - name: Get Name
+      community.routeros.command:
+        commands:
+          - /system identity print
+      register: identity_print
+    - name: Add Serial Number to Netbox
+      netbox_device:
+        netbox_url: https://158.160.48.189
+        netbox_token: токен
+        data:
+          name: "{{identity_print.stdout_lines[0][0].split(' ').1}}"
+          serial: "{{license_print.stdout_lines[0][0].split(' ').1}}"
+        state: present
+        validate_certs: False

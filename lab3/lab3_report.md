@@ -46,7 +46,7 @@
   psql --username netbox --password --host localhost netbox
   ```
 
- ![]()
+  ![PostreSQL status](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/psql_status.png)
 
  - Настройка хранилища данных Redis
   
@@ -63,7 +63,7 @@
   redis-cli ping
   ```
 
-  ![Статус службы redis]()
+  ![проверка службы redis](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/redix_checking.png)
 
  - Установка необходимых пакетов для NetBox
   
@@ -151,8 +151,7 @@
   sudo systemctl start netbox netbox-rq
   sudo systemctl enable netbox netbox-rq
   ```
-  ![Статуст netbox]()
-
+  ![Статуст netbox](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/netbox_status.jpg)
 
  - Настройка HTTP сервера
   
@@ -180,7 +179,7 @@
 
   Приложение NetBox стало доступно как веб-приложение по ip-адресу виртуальной машины: https://158.160.48.189
 
-  ![NetBox приложение]()
+  ![NetBox приложение](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/netbox_interface.jpg)
 
 2. Заполнение информации об устройствах в NetBox 
 
@@ -188,9 +187,9 @@
 
  ![Интерфейсы]()
 
- ![IP-адреса]()
+ ![IP-адреса](https://github.com/LenaSpevak/    2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/ip_addresses.png)
 
- ![Устройства]()
+ ![Устройства](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/netbox_devices.jpg)
 
  
 3. Сохранение данных из NetBox в отдельный файл
@@ -209,22 +208,76 @@
   interfaces: 'True'
   ```
 
-  В нём используется токен, созданый в NetBox
+  В нём используется API токен, созданый в приложении NetBox.
 
-  Информация об устройствах была сохранена в [inventory-файл]().
+  Информация об устройствах была сохранена в [inventory-файл](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/files/nb_inventory.yml).
 
   ```
   ansible-inventory -v --list -i netbox_inventory.yml > nb_inventory.yml
   ```
 
 4. Настройка двух CHR по сценарию
-
   
+  Для изменения имени устройств и добавления IP-адресов на основе [файла](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/files/nb_inventory.yml) был написан сценарий: 
+
+  ```
+  - name: Routers Configuration
+    hosts: device_roles_router
+    tasks:
+      - name: Set Devices Name
+        community.routeros.command:
+          commands:
+            - /system identity set name="{{interfaces[0].device.name}}"
+      - name: Set additional IP
+        community.routeros.command:
+          commands:
+          - /interface bridge add name="{{interfaces[1].display}}"
+          - /ip address add address="{{interfaces[1].ip_addresses[0].address}}" interface="{{interfaces[1].display}}"
+  ```
+  После его выполнения был получен следующий результат
+
+  ![Выполнение сценария](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/changing.jpg)
+
+  ![Измененные имена](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/changing_names.jpg)
 
 5. Написание сценария для сбора серийного номера устройства и его вноса в NetBox
    
-   
+  Был написан следующий сценарий:
+
+  ```
+  - name: Get Serial Numbers To NetBox
+  hosts: device_roles_router
+  tasks:
+    - name: Get Serial Number
+      community.routeros.command:
+        commands:
+          - /system license print
+      register: license_print
+    - name: Get Name
+      community.routeros.command:
+        commands:
+          - /system identity print
+      register: identity_print
+    - name: Add Serial Number to Netbox
+      netbox_device:
+        netbox_url: https://158.160.48.189
+        netbox_token: токен
+        data:
+          name: "{{identity_print.stdout_lines[0][0].split(' ').1}}"
+          serial: "{{license_print.stdout_lines[0][0].split(' ').1}}"
+        state: present
+        validate_certs: False
+  ```
+
+  После его выполнения был получен следующий результат:
+
+  ![Выполнение сценария](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/getting_serial_num.jpg)
+
+  ![Серийтный номер перовго устрйоства](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/serial_num_1.jpg)
+
+  ![Серийтный номер перовго устрйоства](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab3/screenshots/serial_num_2.jpg)
+
 
 **Вывод**
 
-С помощью Ansible и Netbox была собрана вся возможная информация об устройствах CHR1 и CHR2 и сохранена в отдельном файле ..., был создан сценарий для смены имен устройств и добавления IP. Также были собраны серийные номера устройств и внесены в NetBox.
+С помощью Ansible и Netbox была собрана вся возможная информация об устройствах CHR1 и CHR2 и сохранена в отдельном файле nb_inventory.yml, был создан сценарий для смены имен устройств и добавления IP. Также были собраны серийные номера устройств и внесены в NetBox.

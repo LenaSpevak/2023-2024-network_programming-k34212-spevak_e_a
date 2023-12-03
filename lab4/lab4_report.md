@@ -20,6 +20,8 @@
 
 После перехода в папку vm-ubuntu-20.04 была развернута тестовая среда с помощью Vagrant:```vagrant up```. В развернутой среде была установлена виртумальная машина с пользователями p4 и vagrant.  
 
+![](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/screenshots/vm_vargrant.png)
+
 1. Задание Implementing Basic Forwarding
 
 После авторизации была открыта папка проекта ```p4\tutorials\exercises\basic```, и в ней был дополнен файл basic.p4. В нём были дописаны функции Parser, MyIngress и Deparser. 
@@ -28,11 +30,19 @@
 
 В Parser были добавлены функции, которые парсят Ethernet и IPv4 заголовки.
 
+![Parser](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/screenshots/parser1.png)
+
 В MyIngress происходит назначение порта, куда будет направлен пакет, обновление адресов назначения и источника, а также уменьшение time-to-live (ttl). В данной функции была добавлена проверка считваыния таблицей адреса назначения и принятия решения пересылки пакета дальше или же отклонения (вызов функций  ```ipv4_forward``` или ```drop```).
+
+![MyIngress](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/screenshots/MyIngress1.png)
+
+![apply](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/screenshots/apply_in_MyIngress1.png)
 
 Был дополнен Deparser - выбор порядка вставки полей при сборке заголовка пакета обратно.
 
-Дополненный файл p4 - [basic.p4]()
+![Deparser](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/screenshots/Deparser1.png)
+
+Дополненный файл p4 - [basic.p4](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/files/basic.p4)
 
 Для проверки работоспособности кода были выполнены следующие команды:
 
@@ -44,7 +54,7 @@ mininet> pingall
 ```
 Результат проверки:
 
-![Проверка]()
+![Проверка](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/screenshots/testing_basic.p4.png)
 
 2. Задание Implementing Basic Tunneling
 

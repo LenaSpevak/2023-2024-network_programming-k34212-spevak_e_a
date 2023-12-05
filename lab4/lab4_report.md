@@ -40,11 +40,7 @@
 
 Был дополнен Deparser - выбор порядка вставки полей при сборке заголовка пакета обратно.
 
-<<<<<<< HEAD
-Дополненный файл p4 - [basic.p4](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/files/basic.p4)
-=======
 ![Deparser](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/screenshots/Deparser1.png)
->>>>>>> be77ec6ba944ffcd6dd97a029d6f5e16a3d7d129
 
 Дополненный файл p4 - [basic.p4](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/files/basic.p4)
 
@@ -62,7 +58,19 @@ mininet> pingall
 
 2. Задание Implementing Basic Tunneling
 
+ Для выполнения работы была открыта папка ```p4\tutorials\exercises\basic_tunneling```, у которой редактировался файл basic_tunneling.p4. В нём были дополнены функции Parser, MyIngress и Deparser.
 
+В Parser был добавлен pars_tunnel, извлекающий заголовки myTunnel или Ipv4 из заголовка  Ethernet.
+
+![]()
+
+В MyIngress был добавлен action myTunnel_forward, в котором устанавливается порт выхода egress port. Также была определена новая таблица myTunnel_exact, которая сопоставляет поле dst_id заголовка myTunnel. Было обновлено action.
+
+![]()
+
+В Deparser были прописан порядок вставки полей при сборке заголовка пакета обратно:  ethernet, myTunnel, ipv4.
+
+![]()
 
 **Вывод**
 

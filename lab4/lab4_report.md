@@ -6,7 +6,7 @@
 #### Author: Spevak Elena Aleksandrovna
 #### Lab: Lab4
 #### Date of create: 03.12.2023
-#### Date of finished: __.12.2023
+#### Date of finished: 7.12.2023
 
 # **Отчет по лабораторной работе №4** 
 

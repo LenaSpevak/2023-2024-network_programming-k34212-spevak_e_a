@@ -62,15 +62,39 @@ mininet> pingall
 
 В Parser был добавлен pars_tunnel, извлекающий заголовки myTunnel или Ipv4 из заголовка  Ethernet.
 
-![]()
+![Parser](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/screenshots/Parser2.png)
 
 В MyIngress был добавлен action myTunnel_forward, в котором устанавливается порт выхода egress port. Также была определена новая таблица myTunnel_exact, которая сопоставляет поле dst_id заголовка myTunnel. Было обновлено action.
 
-![]()
+![MyIngress](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/screenshots/MyIngress2.png)
 
 В Deparser были прописан порядок вставки полей при сборке заголовка пакета обратно:  ethernet, myTunnel, ipv4.
 
-![]()
+![Deparser](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/screenshots/Deparser2.png)
+
+Дополненный файл p4 - [basic_tunnel.p4](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/files/basic_tunnel.p4)
+
+После сохранения изменений была проверена работоспособность кода.
+
+В терминале были запущены команды 
+
+```
+make run
+
+mininet> xterm h1  h2
+```
+
+Были открыты два терминала устройств: h1 и h2. Во втором была прописана команда ```./receive.py ``` для запуска сервера. На первом был проведен тест ```./send.py 10.0.2.2 "P4 is cool"```. В результате пакет с сообщением "P4 is cool" появился и  терминале устройства h2. 
+
+![test](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/screenshots/check1.png)
+
+В пакете содержатся заголовки Ethernet, Ip, TCP и само сообщение. В следующей проверке был установлен id назначения (dst_id 2). Пакет с сообщением дошел до h2.
+
+![checking_tunneling](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/screenshots/check2.png)
+
+После этого была произведена проверка с указанием другого адреса (10.0.3.3), но прежнего id назначения (dst_id 2). Несмотря на то, что указан адрес другого устройства, пакет всё равно отобразился в терминале h2,так как был указан его id.
+
+![checking_tunneling2](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/screenshots/check3.png)
 
 **Вывод**
 

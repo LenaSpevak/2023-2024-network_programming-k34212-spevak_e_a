@@ -40,7 +40,11 @@
 
 Был дополнен Deparser - выбор порядка вставки полей при сборке заголовка пакета обратно.
 
+<<<<<<< HEAD
+Дополненный файл p4 - [basic.p4](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/files/basic.p4)
+=======
 ![Deparser](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/screenshots/Deparser1.png)
+>>>>>>> be77ec6ba944ffcd6dd97a029d6f5e16a3d7d129
 
 Дополненный файл p4 - [basic.p4](https://github.com/LenaSpevak/2023-2024-network_programming-k34212-spevak_e_a/blob/main/lab4/files/basic.p4)
 
@@ -62,6 +66,7 @@ mininet> pingall
 
 **Вывод**
 
+Был изучен синтаксис языка программирования P4 и выполнены 2 задания обучающих задания от Open network foundation: Implementing Basic Forwarding и Implementing Basic Tunneling, для ознакомления на практике с P4.
 
 
 
